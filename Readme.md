@@ -5,12 +5,33 @@
 
 ## Installation
 
-  Install with [component(1)](http://component.io):
+  Install with [component](http://component.io):
 
     $ component install bredele/emitter-queue
 
+  Install with [nodejs](http://nodejs.org):
+
+    $ npm install emitter-queue
+
+
 ## API
 
+```js
+emitter.queue('hello', 'foo');
+emitter.queue('hello', 'bar');
+emitter.on('hello', function(val) {
+  //foo
+  //bar
+});
+```
+
+### .queue(event, ...)
+
+  Emit event and store it if there isn't any listener for this particular event.
+
+```js
+emitter.queue('foo');
+```
 
 
 ## License
