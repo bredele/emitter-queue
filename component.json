@@ -2,7 +2,7 @@
   "name": "emitter-queue",
   "repo": "bredele/emitter-queue",
   "description": "Queue store for emitter events",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [],
   "dependencies": {},
   "development": {},
