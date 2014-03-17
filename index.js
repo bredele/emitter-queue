@@ -18,14 +18,6 @@ function Queue(emitter) {
 
 
   /**
-   * Queue store
-   * @api private
-   */
-  
-  var queue = {};
-
-
-  /**
    * Cache emitter on.
    * @api private
    */
@@ -44,11 +36,12 @@ function Queue(emitter) {
    */
   
   emitter.queue = function(topic) {
+    this._queue = this._queue || {};
     this._callbacks = this._callbacks || {};
     if(this._callbacks[topic]) {
       this.emit.apply(emitter, arguments);
     } else {
-      (queue[topic] = queue[topic] || [])
+      (this._queue[topic] = this._queue[topic] || [])
         .push([].slice.call(arguments, 1));
     }
   };
@@ -64,13 +57,14 @@ function Queue(emitter) {
    */
   
   emitter.on = emitter.addEventListener = function(topic, fn) {
-    var topics = queue[topic];
+    this._queue = this._queue || {};
+    var topics = this._queue[topic];
     cache.apply(emitter, arguments);
     if(topics) {
       for(var i = 0, l = topics.length; i < l; i++) {
         fn.apply(emitter, topics[i]);
       }
-      delete queue[topic];
+      delete this._queue[topic];
     }
   };
 
