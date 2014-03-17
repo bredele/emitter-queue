@@ -6,13 +6,17 @@ describe("Queue events", function() {
 	var emitter;
 	beforeEach(function() {
 		emitter = new Emitter();
+		Queue(emitter);
+	});
+
+	it('should add a queue handler', function() {
+		assert(emitter.queue);
 	});
 	
 	it("should queue events", function() {
 		var stack = [];
-		Queue(emitter);
-		emitter.emit('test', 'foo');
-		emitter.emit('test', 'bar');
+		emitter.queue('test', 'foo');
+		emitter.queue('test', 'bar');
 		emitter.on('test', function(val) {
 			stack.push(val);
 		});
