@@ -22,5 +22,12 @@ describe("Queue events", function() {
 		});
 		assert.deepEqual(stack, ['foo', 'bar']);
 	});
+
+	it('emits events', function(done) {
+		emitter.on('hello', function(val) {
+			if (val === 'world') done();
+		});
+		emitter.queue('hello', 'world');
+	});
 	
 });
