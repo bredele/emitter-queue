@@ -21,5 +21,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bredele/emitter-queue/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.0",
+    "component-emitter": "~1.1.2"
   }
 }
