@@ -1,9 +1,8 @@
-
 # emitter-queue
 
   > Queue [emitter](http://github.com/component/emitter) events
 
- `emitter-queue` can be used with [emitter](http://github.com/component/emitter) or as a plugin for [store](http://github.com/bredele/store).
+ `emitter-queue` can be used with [emitter](http://github.com/component/emitter) or as a plugin for [datastore](http://github.com/bredele/datastore).
  
 ## Installation
 
