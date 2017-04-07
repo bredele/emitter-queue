@@ -1,6 +1,6 @@
 {
   "name": "emitter-queue",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Queue events from an event emitter",
   "main": "index.js",
   "scripts": {
