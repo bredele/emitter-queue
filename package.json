@@ -1,10 +1,10 @@
 {
   "name": "emitter-queue",
   "version": "0.1.2",
-  "description": "Queue store for emitter events",
+  "description": "Queue events from an event emitter",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "tape test/*.js && browserify test/queue.js | tape-run"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,7 @@
   },
   "devDependencies": {
     "browserify": "^14.3.0",
-    "component-emitter": "~1.1.2",
-    "mocha": "~1.18.0",
+    "component-emitter": "^1.2.1",
     "tape": "^4.6.3",
     "tape-run": "^3.0.0"
   }

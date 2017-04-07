@@ -1,33 +1,13 @@
-var Queue = require('..'),
-		Emitter = require('component-emitter'),
-		assert = require('assert');
+/**
+ * Test dependencies
+ */
 
-describe("Queue events", function() {
-	var emitter;
-	beforeEach(function() {
-		emitter = new Emitter();
-		Queue(emitter);
-	});
+var test = require('tape')
+var Emitter = require('component-emitter')
+var queue = require('..')
 
-	it('should add a queue handler', function() {
-		assert(emitter.queue);
-	});
-	
-	it("should queue events", function() {
-		var stack = [];
-		emitter.queue('test', 'foo');
-		emitter.queue('test', 'bar');
-		emitter.on('test', function(val) {
-			stack.push(val);
-		});
-		assert.deepEqual(stack, ['foo', 'bar']);
-	});
-
-	it('emits events', function(done) {
-		emitter.on('hello', function(val) {
-			if (val === 'world') done();
-		});
-		emitter.queue('hello', 'world');
-	});
-	
-});
+test('should add a queue handler', function(assert) {
+	assert.plan(1)
+	var emitter = queue(new Emitter)
+	assert.equal(typeof emitter.queue, 'function')
+})
