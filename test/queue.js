@@ -22,3 +22,12 @@ test('should queue events', function(assert) {
 		assert.equal(val, stack.shift())
 	})
 })
+
+test('emits events', function(assert) {
+	assert.plan(1)
+	var emitter = queue(new Emitter)
+	emitter.on('hello', function(val) {
+		assert.equal(val, 'world')
+	})
+	emitter.queue('hello', 'world')
+})

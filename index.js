@@ -38,7 +38,7 @@ function Queue(emitter) {
   emitter.queue = function(topic) {
     this._queue = this._queue || {};
     this._callbacks = this._callbacks || {};
-    if(this._callbacks[topic]) {
+    if(this.listeners(topic).length > 0) {
       this.emit.apply(this, arguments);
     } else {
       (this._queue[topic] = this._queue[topic] || [])
