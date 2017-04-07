@@ -11,3 +11,14 @@ test('should add a queue handler', function(assert) {
 	var emitter = queue(new Emitter)
 	assert.equal(typeof emitter.queue, 'function')
 })
+
+test('should queue events', function(assert) {
+	assert.plan(2)
+	var stack = ['foo', 'bar']
+	var emitter = queue(new Emitter)
+	emitter.queue('test', 'foo')
+	emitter.queue('test', 'bar')
+	emitter.on('test', function(val) {
+		assert.equal(val, stack.shift())
+	})
+})
