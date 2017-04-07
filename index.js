@@ -8,8 +8,8 @@ module.exports = Queue;
 
 /**
  * Queue events on emitter-like objects.
- * 
- * @param {Emitter} emitter 
+ *
+ * @param {Emitter} emitter
  * @see  http://github.com/component/emitter
  * @api public
  */
@@ -34,7 +34,7 @@ function Queue(emitter) {
    * @param {String} event
    * @api public
    */
-  
+
   emitter.queue = function(topic) {
     this._queue = this._queue || {};
     this._callbacks = this._callbacks || {};
@@ -55,7 +55,7 @@ function Queue(emitter) {
    * @return {Emitter}
    * @api public
    */
-  
+
   emitter.on = emitter.addEventListener = function(topic, fn) {
     this._queue = this._queue || {};
     var topics = this._queue[topic];
@@ -68,5 +68,5 @@ function Queue(emitter) {
     }
   };
 
-
+  return emitter
 }
