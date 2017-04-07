@@ -1,9 +1,9 @@
 
 /**
- * Expose 'Queue'
+ * Expose 'queue'
  */
 
-module.exports = Queue;
+module.exports = queue
 
 
 /**
@@ -14,14 +14,14 @@ module.exports = Queue;
  * @api public
  */
 
-function Queue(emitter) {
+function queue(emitter) {
 
 
   /**
    * Cache emitter on.
    * @api private
    */
-  var cache = emitter.on;
+  var cache = emitter.on
 
 
   /**
@@ -36,15 +36,11 @@ function Queue(emitter) {
    */
 
   emitter.queue = function(topic) {
-    this._queue = this._queue || {};
-    this._callbacks = this._callbacks || {};
-    if(this.listeners(topic).length > 0) {
-      this.emit.apply(this, arguments);
-    } else {
-      (this._queue[topic] = this._queue[topic] || [])
-        .push([].slice.call(arguments, 1));
-    }
-  };
+    this._queue = this._queue || {}
+    this._callbacks = this._callbacks || {}
+    if(this.listeners(topic).length > 0) this.emit.apply(this, arguments)
+    else (this._queue[topic] = this._queue[topic] || []).push([].slice.call(arguments, 1))
+  }
 
 
   /**
@@ -57,16 +53,16 @@ function Queue(emitter) {
    */
 
   emitter.on = emitter.addEventListener = function(topic, fn) {
-    this._queue = this._queue || {};
-    var topics = this._queue[topic];
-    cache.apply(this, arguments);
+    this._queue = this._queue || {}
+    var topics = this._queue[topic]
+    cache.apply(this, arguments)
     if(topics) {
       for(var i = 0, l = topics.length; i < l; i++) {
-        fn.apply(this, topics[i]);
+        fn.apply(this, topics[i])
       }
-      delete this._queue[topic];
+      delete this._queue[topic]
     }
-  };
+  }
 
   return emitter
 }
