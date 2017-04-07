@@ -4,7 +4,8 @@
   "description": "Queue events from an event emitter",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js && browserify test/queue.js | tape-run"
+    "test": "tape test/*.js",
+    "test:browser":"browserify test/queue.js | tape-run"
   },
   "repository": {
     "type": "git",
